@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>최대공약수 구하기</title>
+</head>
+<body>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+    }
+  </style>
+  <script>
+    let num1 = parseInt(prompt('첫번째 수를 입력하세요'))
+    let num2 = parseInt(prompt('번째 수를 입력하세요'))
+    
+    let GCD = function(a,b){
+        while (b !== 0){
+            let temp = b
+            b = a % b
+            a = temp
+        }
+        return a
+    }
+    document.write(`${num1}과 ${num2}의 최대공약수 : ${GCD(num1,num2)}`)
+  </script>
+</body>
+</html>
