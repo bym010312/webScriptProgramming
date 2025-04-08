@@ -69,7 +69,6 @@
         const calculationBtn = document.querySelector('form button')
         const result = document.querySelector('#result')
 
-    // 최대공약수 구하는 함수
         let GCD = function(a,b){
         while (b !== 0){
             let temp = b
@@ -78,7 +77,10 @@
         }
         return a
     }
-    calculationBtn.onclick = () => {result.innerHTML = GCD(firstNum.value, secondNum.value)}
+
+    calculationBtn.onclick = () => {
+      setTimeout(()=>{result.innerHTML = GCD(firstNum.value, secondNum.value)},3000)
+    }
 
   </script>
 </body>
