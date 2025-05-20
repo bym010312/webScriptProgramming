@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        #time {
+            border: 1px solid gray;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>몰디브 여행일까지</h1>
+    <p><span id="daysLeft"></span>일 남음</p>
+    <h3>현재 몰디브 시간</h3>
+    <div id="time">
+        <div id="today"></div>
+        <div id="realTime"></div>
+    </div>
+    
+    <script>
+        const travelDate = new Date("2030-12-31"); // 여행 날짜
+        
+        const displayDate = document.querySelector("#today"); // 현재 날짜 표시
+        const displayTime = document.querySelector("#realTime"); // 현재 시간 표시
+        const displayDaysLeft = document.querySelector("#daysLeft"); // 남은 일수 표시
+
+        const now = new Date(); // 현재 시간 기준
+
+        const MaldivesDate = new Date(now.toLocaleString("en-US", { timeZone: "Indian/Maldives" }));
+
+        let daysLeft = Math.ceil((travelDate - MaldivesDate) / (1000 * 60 * 60 * 24)); // 남은 일수 계산
+
+        const year = MaldivesDate.getFullYear();
+        const month = MaldivesDate.getMonth() + 1;
+        const day = MaldivesDate.getDate();
+        const day1 = MaldivesDate.getDay();
+
+        let day2 = "";
+        switch (day1) {
+            case 0: day2 = "일요일"; break;
+            case 1: day2 = "월요일"; break;
+            case 2: day2 = "화요일"; break;
+            case 3: day2 = "수요일"; break;
+            case 4: day2 = "목요일"; break;
+            case 5: day2 = "금요일"; break;
+            case 6: day2 = "토요일"; break;
+        }
+
+        displayDaysLeft.innerHTML = `<strong style="font-size:20px; color:red;">${daysLeft}</strong> `; // 남은 일수 표시
+        displayDate.innerHTML = `${year}년 ${month}월 ${day}일 <strong>${day2}</strong>`;
+
+        let clock = () => {
+            const MaldivesNow = new Date(new Date().toLocaleString("en-US", { timeZone: "Indian/Maldives" }));
+
+            let hrs = MaldivesNow.getHours();
+            let mins = MaldivesNow.getMinutes();
+            let secs = MaldivesNow.getSeconds();
+
+            let period = "AM"; // 오전/오후 구분
+            if (hrs === 0) {
+                hrs = 12;
+            } else if (hrs > 12) {
+                hrs = hrs - 12;
+                period = "PM";
+            }
+
+            hrs = (hrs < 10) ? "0" + hrs : hrs; // 시
+            mins = (mins < 10) ? "0" + mins : mins; // 분
+            secs = (secs < 10) ? "0" + secs : secs; // 초 
+
+            displayTime.innerText = `${period} ${hrs}:${mins}:${secs}`; // 시계에 시간 표시
+        };
+        clock();
+        setInterval(clock, 1000); 
+    </script>
+</body>
+
+</html>
