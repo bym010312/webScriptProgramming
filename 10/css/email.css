@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+}
+
+#userInput {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+input[type="email"] {
+    width: 250px;
+    float: left;
+    height: 32px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+button {
+    width: 60px;
+    height: 32px;
+    float: left;
+    margin-left: 15px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#result {
+    padding-left: 30px;
+    font-weight: bold;
+}
